@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  api:
+    container_name: fastapi_stripe_demo
+    build:
+      context: .
+    env_file:
+      - .env
+    volumes:
+      - ./app:/app
+    ports:
+      - 8080:8080
+    command: >
+      /bin/bash -c "pwd && ls && uvicorn app.main:app --reload --host 0.0.0.0 --port 8080"
